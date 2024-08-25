@@ -1,28 +1,30 @@
 package com.diegoguedes.financialsystem.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "sender_id")
-    private User sender;
-
-    @ManyToOne
-    @JoinColumn(name = "receiver_id")
-    private User receiver;
-
+    private Long fromUserId;
+    private Long toUserId;
     private double amount;
-    private LocalDateTime transactionDate;
 
+    public Transaction(Long fromUserId, Long toUserId, double amount) {
+        this.fromUserId = fromUserId;
+        this.toUserId = toUserId;
+        this.amount = amount;
+    }
 }
