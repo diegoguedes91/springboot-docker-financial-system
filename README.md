@@ -41,7 +41,7 @@ Este é um sistema simples de gerenciamento financeiro que permite o cadastro de
     Na raiz do projeto, execute o comando abaixo para construir e iniciar os containers Docker:
 
     ```
-    docker-compose upbash --build
+    docker-compose up --build
     ```
     
     Este comando irá:
